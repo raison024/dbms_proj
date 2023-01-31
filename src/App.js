@@ -15,7 +15,7 @@ export default function App() {
   };
   return (
     <div className="App-header">
-      h1
+      <h1>Store</h1>
       <div style={{height: '300px', width: '300px'}}>
         <QrReader
           delay={300}
