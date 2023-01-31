@@ -18,7 +18,7 @@ export default function App() {
       <h1>Store</h1>
       <div style={{height: '300px', width: '300px'}}>
         <QrReader
-          delay={300}
+          delay={10000}
           onError={handleError}
           // onScan={handleScan}
           style={{ width: "50%" }}
