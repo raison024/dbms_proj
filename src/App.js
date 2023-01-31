@@ -15,13 +15,16 @@ export default function App() {
   };
   return (
     <div className="App-header">
+      h1
       <div style={{height: '300px', width: '300px'}}>
         <QrReader
           delay={300}
           onError={handleError}
-          onScan={handleScan}
+          // onScan={handleScan}
           style={{ width: "50%" }}
-          facingMode="environment"
+          // facingMode="environment"
+          onResult={ handleScan }
+          constraints={ {facingMode: 'environment'} }
         />
       <p>{result}</p>
       </div>
