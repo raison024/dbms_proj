@@ -10,7 +10,7 @@ const App = (props) => {
       <h3>Virtual Cart</h3>
     <div style={{width: '200px'}}>
       <QrReader
-        facingMode="environment"
+        constraints={{ facingMode: 'environment' }}
         onResult={(result, error) => {
           if (!!result) {
             setData(result?.text);
