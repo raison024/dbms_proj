@@ -2,74 +2,78 @@ import React, { useState } from "react";
 import { QrReader } from "react-qr-reader";
 import "./App.css";
 
-const QRscanner = () => {
-  const [scanResults, setScanResults] = useState([]);
-  const handleScan = (data) => {
-    if (data) {
-      setScanResults([...scanResults, data]);
-    }
-  }
-  const handleError = (err) => {
-    console.error(err);
-  };
+
+const App = (props) => {
+  const [data, setData] = useState('No Result');
 
   return (
     <div className="App-header">
-      <span>QR Scanner</span>
+      <h3>Virtual Cart</h3>
+    <div style={{width: '200px'}}>
+      <QrReader
+        constraints={{ facingMode: 'environment' }}
+        onResult={(result, error) => {
+          if (!!result) {
+            setData(result?.text);
+            // setData([...data, result]);
+          }
 
-      <center>
-        <div style={{ height: '500px', width: '200px'}}>
-          <QrReader
-            constraints={{ facingMode: 'environment' }}
-            delay={300}
-            onError={handleError}
-            onScan={handleScan}
-            style={{ height: 240, width: 320 }}
-          />
-        </div>
-      </center>
-
-      <input type='text'
-        style={{ fontSize: 18, width: 320, height: 100, backgroundColor: 'blue' }}
-        defaultValue={scanResults}
-        value={scanResults}
+          if (!!error) {
+            console.info(error);
+          }
+        }}
+        style={{ width: '50%' }}
       />
+      <p>{data}</p>
+
+    </div>
     </div>
   );
 };
 
-export default QRscanner;
+export default App;
 
 
-// const App = (props) => {
-//   const [data, setData] = useState('No Result');
+
+// const QRscanner = () => {
+//   const [scanResults, setScanResults] = useState([]);
+//   const handleScan = (data) => {
+//     if (data) {
+//       setScanResults([...scanResults, data]);
+//     }
+//   }
+//   const handleError = (err) => {
+//     console.error(err);
+//   };
 
 //   return (
 //     <div className="App-header">
-//       <h3>Virtual Cart</h3>
-//     <div style={{width: '200px'}}>
-//       <QrReader
-//         constraints={{ facingMode: 'environment' }}
-//         onResult={(result, error) => {
-//           if (!!result) {
-//             setData(result?.text);
-//             // setData([...data, result]);
-//           }
+//       <span>QR Scanner</span>
 
-//           if (!!error) {
-//             console.info(error);
-//           }
-//         }}
-//         style={{ width: '50%' }}
+//       <center>
+//         <div style={{ height: '500px', width: '200px'}}>
+//           <QrReader
+//             constraints={{ facingMode: 'environment' }}
+//             delay={300}
+//             onError={handleError}
+//             onScan={handleScan}
+//             style={{ height: 240, width: 320 }}
+//           />
+//         </div>
+//       </center>
+
+//       <input type='text'
+//         style={{ fontSize: 18, width: 320, height: 100, backgroundColor: 'blue' }}
+//         defaultValue={scanResults}
+//         value={scanResults}
 //       />
-//       <p>{data}</p>
-
-//     </div>
 //     </div>
 //   );
 // };
 
-// export default App;
+// export default QRscanner;
+
+
 
 // export default function App() {
 //   const [result, setResult] = useState("No result");
