@@ -20,6 +20,7 @@ const QRscanner = () => {
       <center>
         <div style={{ marginTop: 30 , height: '500px', width: '200px'}}>
           <QrReader
+            constraints={{ facingMode: 'environment' }}
             delay={300}
             onError={handleError}
             onScan={handleScan}
