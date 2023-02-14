@@ -2,35 +2,72 @@ import React, { useState } from "react";
 import { QrReader } from "react-qr-reader";
 import "./App.css";
 
-const App = (props) => {
-  const [data, setData] = useState('No Result');
+const QRscanner = () => {
+  const [scanResults, setScanResults] = useState([]);
+  const handleScan = (data) => {
+    if (data) {
+      setScanResults([...scanResults, data]);
+    }
+  }
+  const handleError = (err) => {
+    console.error(err);
+  };
 
   return (
-    <div className="App-header">
-      <h3>Virtual Cart</h3>
-    <div style={{width: '200px'}}>
-      <QrReader
-        constraints={{ facingMode: 'environment' }}
-        onResult={(result, error) => {
-          if (!!result) {
-            setData(result?.text);
-            // setData([...data, result]);
-          }
+    <div>
+      <span>QR Scanner</span>
 
-          if (!!error) {
-            console.info(error);
-          }
-        }}
-        style={{ width: '50%' }}
+      <center>
+        <div style={{ marginTop: 30 , height: '500px', width: '200px'}}>
+          <QrReader
+            delay={300}
+            onError={handleError}
+            onScan={handleScan}
+            style={{ height: 240, width: 320 }}
+          />
+        </div>
+      </center>
+
+      <div
+        style={{ fontSize: 18, width: 320, height: 100, marginTop: 100 }}
+        value={scanResults}
       />
-      <p>{data}</p>
-
-    </div>
     </div>
   );
 };
 
-export default App;
+export default QRscanner;
+
+
+// const App = (props) => {
+//   const [data, setData] = useState('No Result');
+
+//   return (
+//     <div className="App-header">
+//       <h3>Virtual Cart</h3>
+//     <div style={{width: '200px'}}>
+//       <QrReader
+//         constraints={{ facingMode: 'environment' }}
+//         onResult={(result, error) => {
+//           if (!!result) {
+//             setData(result?.text);
+//             // setData([...data, result]);
+//           }
+
+//           if (!!error) {
+//             console.info(error);
+//           }
+//         }}
+//         style={{ width: '50%' }}
+//       />
+//       <p>{data}</p>
+
+//     </div>
+//     </div>
+//   );
+// };
+
+// export default App;
 
 // export default function App() {
 //   const [result, setResult] = useState("No result");
