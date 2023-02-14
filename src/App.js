@@ -8,7 +8,7 @@ const App = (props) => {
   return (
     <div className="App-header">
       <h3>Virtual Cart</h3>
-    <div style={{width: '500px'}}>
+    <div style={{width: '200px'}}>
       <QrReader
         facingMode="environment"
         onResult={(result, error) => {
