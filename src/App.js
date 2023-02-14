@@ -14,11 +14,11 @@ const QRscanner = () => {
   };
 
   return (
-    <div>
+    <div className="App-header">
       <span>QR Scanner</span>
 
       <center>
-        <div style={{ marginTop: 30 , height: '500px', width: '200px'}}>
+        <div style={{ height: '500px', width: '200px'}}>
           <QrReader
             constraints={{ facingMode: 'environment' }}
             delay={300}
@@ -30,8 +30,8 @@ const QRscanner = () => {
       </center>
 
       <input type='text'
-        style={{ fontSize: 18, width: 320, height: 100, marginTop: 100, backgroundColor: 'blue' }}
-        value={data}
+        style={{ fontSize: 18, width: 320, height: 100, backgroundColor: 'blue' }}
+        value={scanResults}
       />
     </div>
   );
