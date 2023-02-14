@@ -30,7 +30,7 @@ const QRscanner = () => {
       </center>
 
       <div
-        style={{ fontSize: 18, width: 320, height: 100, marginTop: 100 }}
+        style={{ fontSize: 18, width: 320, height: 100, marginTop: 100, backgroundColor: 'blue' }}
         value={scanResults}
       />
     </div>
