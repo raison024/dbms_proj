@@ -3,7 +3,7 @@ import { QrReader } from "react-qr-reader";
 import "./App.css";
 
 const App = (props) => {
-  const [data, setData] = useState('No result');
+  const [data, setData] = useState([]);
 
   return (
     <div className="App-header">
@@ -14,6 +14,7 @@ const App = (props) => {
         onResult={(result, error) => {
           if (!!result) {
             setData(result?.text);
+            setData([...data, result]);
           }
 
           if (!!error) {
@@ -23,6 +24,7 @@ const App = (props) => {
         style={{ width: '50%' }}
       />
       <p>{data}</p>
+
     </div>
     </div>
   );
