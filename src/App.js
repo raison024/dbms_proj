@@ -31,6 +31,7 @@ const QRscanner = () => {
 
       <input type='text'
         style={{ fontSize: 18, width: 320, height: 100, backgroundColor: 'blue' }}
+        defaultValue={scanResults}
         value={scanResults}
       />
     </div>
